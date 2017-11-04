@@ -34,6 +34,8 @@
     methods: {
       onClickAdd () {
         this.$store.commit('add')
+
+        this.$emit('add')
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <form class="memo-editor" @submit.prevent="onSubmit">
-    <textarea class="memo-editor__textarea" placeholder="なにか書いてください" v-model="memo"></textarea>
+    <textarea class="memo-editor__textarea" placeholder="なにか書いてください" v-model="memo" ref="textarea"></textarea>
     <button type="submit" class="memo-editor__save">保存する</button> 
     <button type="button" class="memo-editor__remove" @click="onRemove">削除する</button>
   </form>
@@ -28,6 +28,7 @@ export default {
     }
   },
   mounted () {
+    this.$refs.textarea.focus()
     // console.log(this.$store.state.route.params)
   },
   methods: {
