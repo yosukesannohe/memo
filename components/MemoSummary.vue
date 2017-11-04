@@ -1,8 +1,8 @@
 <template>
-  <a href="#" class="memo-summary" @click.prevent="onClick">
+  <nuxt-link :to="id" class="memo-summary">
     <div class="memo-summary__date">{{ updated_at }}</div>
     <div class="memo-summary__content">{{ content }}</div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
@@ -12,6 +12,9 @@ import moment from 'moment'
 export default {
   props: ['memo'],
   computed: {
+    id () {
+      return this.memo.id
+    },
     updated_at () {
       return moment(this.memo.updated_at).format('YYYY.M.D H:mm')
     },
@@ -19,13 +22,6 @@ export default {
       return truncate(this.memo.content, {
         length: 30,
         omission: '...'
-      })
-    }
-  },
-  methods: {
-    onClick () {
-      this.$store.commit('select', {
-        id: this.memo.id
       })
     }
   }

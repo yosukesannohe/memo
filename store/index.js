@@ -6,8 +6,7 @@ const LOCAL_STORAGE_KEY = '_memo'
 
 const store = () => new Vuex.Store({
   state: {
-    memos: [],
-    selectedId: null
+    memos: []
   },
   actions: {
     load ({ commit, state }) {
@@ -38,21 +37,22 @@ const store = () => new Vuex.Store({
         }
 
         state.memos.push(memo)
+
+        payload.router.push({ path: `/${memo.id}` })
       }
 
       Lockr.set(LOCAL_STORAGE_KEY, state.memos)
     },
-    select (state, payload) {
-      state.selectedId = payload.id
-    },
     remove (state, payload) {
       let index = state.memos.findIndex((memo) => {
-        return memo.id === state.selectedId
+        return memo.id === state.route.params
       })
 
       state.memos.splice(index, 1)
 
       Lockr.set(LOCAL_STORAGE_KEY, state.memos)
+
+      payload.router.push({ path: `/` })
     }
   },
   getters: {
@@ -61,7 +61,7 @@ const store = () => new Vuex.Store({
     },
     memo (state) {
       return state.memos.find((memo) => {
-        return memo.id === state.selectedId
+        return memo.id === state.route.params.id
       })
     }
   }
