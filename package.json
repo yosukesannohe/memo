@@ -1,6 +1,6 @@
 {
   "name": "simple-memo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Nuxt.js project",
   "author": "Yosuke Sannohe <contact@ysannohe.net>",
   "private": true,
@@ -16,7 +16,8 @@
     "lockr": "^0.8.4",
     "moment": "^2.19.1",
     "nuxt": "^1.0.0-rc11",
-    "uuid": "^3.1.0"
+    "uuid": "^3.1.0",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

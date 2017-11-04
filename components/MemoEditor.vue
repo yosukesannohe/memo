@@ -27,20 +27,26 @@ export default {
       }
     }
   },
+  mounted () {
+    // console.log(this.$store.state.route.params)
+  },
   methods: {
     save (content) {
       let updatedAt = moment().toISOString()
 
       this.$store.commit('save', {
         updated_at: updatedAt,
-        content: content
+        content: content,
+        router: this.$router
       })
     },
     onSubmit () {
       this.save(this.content)
     },
     onRemove () {
-      this.$store.commit('remove')
+      this.$store.commit('remove', {
+        router: this.$router
+      })
     }
   }
 }

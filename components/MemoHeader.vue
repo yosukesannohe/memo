@@ -2,7 +2,7 @@
   <memo-header class="memo-header">
     <h1 class="memo-header__heading">とても簡素なメモ</h1>
 
-    <button type="button" class="memo-header__add" @click.prevent="onClickAdd">追加する</button>
+    <nuxt-link to="/" class="memo-header__add">追加する</nuxt-link>
   </memo-header>
 </template>
 
@@ -19,6 +19,13 @@
   .memo-header__heading {
     color: #fff;
     font-size: 16px;
+  }
+
+  .memo-header__add {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #fff;
+    color: inherit;
   }
 </style>
 
